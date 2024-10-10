@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <style>
+        body {
+            background-image: url('https://www.healthcareitnews.com/sites/hitn/files/diabetes-test-stock-712.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            font-family: Trebuchet MS, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 90%;
+            width: 400px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            font-size: 28px;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        a {
+            display: inline-block;
+            color: #fff;
+            background-color: #0066cc;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        a:hover {
+            background-color: #004080;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            a {
+                padding: 8px 16px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 20px;
+            }
+
+            a {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ result }}</h1>
+        <p>
+            <a href="{% url 'predict_diabetes' %}">Go back to predict</a>
+        </p>
+    </div>
+</body>
+</html>

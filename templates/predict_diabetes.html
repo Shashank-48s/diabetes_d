@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction</title>
+    <style>
+        body {
+            background-image: url('https://www.healthcareitnews.com/sites/hitn/files/diabetes-test-stock-712.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 20px;
+            font-family: Trebuchet MS, sans-serif;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #07090a;
+            text-decoration: underline;
+            padding: 5px 10px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 5px;
+            display: inline-block;
+            width: fit-content;
+            margin-bottom: 20px;
+        }
+
+        form {
+            width: 100%;
+            max-width: 500px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #000;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+        }
+
+        input[type="number"],
+        input[type="submit"] {
+            width: calc(100% - 18px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid rgba(204, 204, 204, 0.5);
+            background-color: rgba(255, 255, 255, 0.3);
+            padding-left: 10px;
+        }
+
+        input[type="submit"] {
+            background-color: rgba(0, 102, 204, 0.7);
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background-color: rgba(0, 64, 128, 0.8);
+        }
+
+        .logout-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(0, 204, 17, 0.7);
+            color: rgb(5, 4, 4);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            background-color: rgba(0, 64, 128, 0.8);
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+
+            form {
+                padding: 15px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            .logout-btn {
+                padding: 6px 12px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .logout-btn {
+                padding: 4px 8px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Diabetes Prediction</h1>
+
+    <form action="{% url 'predict_diabetes' %}" method="post">
+        {% csrf_token %}
+        <label for="pregnancies">Number of Pregnancies:</label>
+        <input type="number" id="pregnancies" name="pregnancies">
+
+        <label for="glucose">Glucose Level:</label>
+        <input type="number" id="glucose" name="glucose">
+
+        <label for="bloodpressure">Blood Pressure:</label>
+        <input type="number" id="bloodpressure" name="bloodpressure">
+
+        <label for="skinthickness">Skin Thickness:</label>
+        <input type="number" id="skinthickness" name="skinthickness">
+
+        <label for="insulin">Insulin Level:</label>
+        <input type="number" id="insulin" name="insulin">
+
+        <label for="bmi">BMI:</label>
+        <input type="number" step="0.01" id="bmi" name="bmi">
+
+        <label for="diabetes_pedigree_function">Diabetes Pedigree Function:</label>
+        <input type="number" step="0.01" id="diabetes_pedigree_function" name="diabetes_pedigree_function">
+
+        <label for="age">Age:</label>
+        <input type="number" id="age" name="age">
+
+        <input type="submit" value="Predict">
+    </form>
+
+    <!-- Logout Button -->
+    <a href="{% url 'logout' %}" class="logout-btn">Logout</a>
+</body>
+</html>
